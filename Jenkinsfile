@@ -15,14 +15,14 @@ hubotSend message: "*Release Started*. \\n Releasing Test Project. :sunny: \\n<!
       }
     }
     stage('Build') {
-      steps {
-        sh '''echo "build"
-
-hubotSend message: "*Release Completed*. \\n Releaseing Test Project.", tokens: "BUILD_NUMBER,BUILD_ID", status: \'SUCCESS\'
-'''
-      }
+          steps {
+            sh '''
+              echo "hola"
+              hubotSend message: "*Release Completed*. \\n Releaseing Test Project.", tokens: "BUILD_NUMBER,BUILD_ID", status: \'SUCCESS\'
+            '''
+          }
     }
-    stage('aprobaciÃƒÂ³n') {
+    stage('aprobacion') {
       steps {
         sh '''hubotApprove message: \'Promote to Staging?\', tokens: "BUILD_NUMBER, BUILD_DURATION", status: \'ABORTED\'
 '''
