@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Inicio') {
       steps {
-        sh 'echo "hola4"'
+        sh 'hubotSend message: "*Release Started*. \\n Releasing Test Project. :sunny: \\n<!here> <!channel> <@nrayapati> ", tokens: "BUILD_NUMBER,BUILD_ID", status: \'STARTED\''
       }
     }
     stage('Build') {
