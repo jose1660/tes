@@ -4,7 +4,13 @@ pipeline {
     stage('Inicio') {
       steps {
         sh '''echo "hola"
-hubotSend message: "*Release Started*. \\n Releasing Test Project. :sunny: \\n room: \'pull-requests\' <@nrayapati> ", tokens: "BUILD_NUMBER,BUILD_ID", status: \'STARTED\'
+
+withEnv([\'HUBOT_URL=http://192.168.1.176:9999\',\'HUBOT_DEFAULT_ROOM=pull-requests\',\'HUBOT_FAIL_ON_ERROR=false\']) {
+  hubotSend message: \'building job $BUILD_URL\'
+  hubotApprove message: \'Proceed with building this job?\'
+}
+
+hubotSend message: "*Release Started*. \\n Releasing Test Project. :sunny: \\n <@nrayapati> ", tokens: "BUILD_NUMBER,BUILD_ID", status: \'STARTED\'
 '''
       }
     }
