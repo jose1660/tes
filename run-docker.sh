@@ -5,7 +5,7 @@ export PORT=9999
 export EXPRESS_PORT=9999
 export HUBOT_SLACK_TOKEN=xoxb-220558913360-384990725124-AXHVoSwavi6nQjVS2701Gbt0
 export HUBOT_ADAPTER=slack
-export HUBOT_JENKINS_URL=http://ip172-18-0-23-bd3ne1ts2ti0008pm20g-8080.direct.labs.play-with-docker.com
+export HUBOT_JENKINS_URL=http://172.17.0.1:8080
 export HUBOT_JENKINS_AUTH=admin:admin
 
 
