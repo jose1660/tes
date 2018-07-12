@@ -15,4 +15,4 @@ docker run \
   -e "HUBOT_JENKINS_AUTH=$HUBOT_JENKINS_AUTH" \
   -p 9999:8080 \
   -td --name ChatOps_Slack \
-  bot
+  bot2
