@@ -156,3 +156,10 @@ can then run hubot with the adapter.
 Where `<adapter>` is the name of your adapter without the `hubot-` prefix.
 
 [hubot-adapters]: https://github.com/github/hubot/blob/master/docs/adapters.md
+
+
+Infra:
+
+2 cambios: en plugin y dockerfile para la url
+
+
