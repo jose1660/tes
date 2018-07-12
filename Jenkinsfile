@@ -3,15 +3,7 @@ pipeline {
   stages {
     stage('Inicio') {
       steps {
-        sh '''echo "hola"
-
-withEnv([\'HUBOT_URL=http://192.168.1.176:9999\',\'HUBOT_DEFAULT_ROOM=pull-requests\',\'HUBOT_FAIL_ON_ERROR=false\']) {
-� hubotSend message: \'building job $BUILD_URL\'
-� hubotApprove message: \'Proceed with building this job?\'
-}
-
-hubotSend message: "*Release Started*. \\n Releasing Test Project. :sunny: \\n <@nrayapati> ", tokens: "BUILD_NUMBER,BUILD_ID", status: \'STARTED\'
-'''
+        sh 'echo "hola"'
       }
     }
     stage('Build') {
@@ -22,7 +14,7 @@ hubotSend message: "*Release Completed*. \\n Releaseing Test Project.", tokens: 
 '''
       }
     }
-    stage('aprobaciÃ³n') {
+    stage('aprobaciÃƒÂ³n') {
       steps {
         sh '''hubotApprove message: \'Promote to Staging?\', tokens: "BUILD_NUMBER, BUILD_DURATION", status: \'ABORTED\'
 '''
