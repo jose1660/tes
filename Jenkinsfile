@@ -1,6 +1,15 @@
 pipeline {
   agent any
   stages {
+
+  stage('Iniciandoooo') {
+            steps {
+              sh '''
+                echo "hola"
+              '''
+            }
+      }
+
     stage('Inicio') {
       steps {
          script {
