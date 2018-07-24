@@ -10,6 +10,8 @@ pipeline {
             }
       }
 
+hubotApprove failOnError: 'false', message: 'Proceed with building this job?', room: 'botlab', url: 'http://192.168.1.176:9999/'
+
     stage('Inicio') {
       steps {
          script {
