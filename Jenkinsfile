@@ -44,8 +44,8 @@ REGISTRY: Requiere construir o no Registry en ECR'''
       steps {
         script {
           config = fnSteps.configs(DEVELOPMENT_ENV)
-          withEnv(['HUBOT_URL=http://52.2.27.172:9999','HUBOT_DEFAULT_ROOM=pull-requests','HUBOT_FAIL_ON_ERROR=false'])
-          hubotSend message: "*Release Started*. \n Releasing Test Project. :sunny: \n<!here> <!channel> <@nrayapati> ", tokens: "BUILD_NUMBER,BUILD_ID", status: 'STARTED'
+          withEnv(['HUBOT_URL=http://52.2.27.172:9999','HUBOT_DEFAULT_ROOM=pull-requests','HUBOT_FAIL_ON_ERROR=false']) {
+          hubotSend message: "*Release Started*. \n Releasing Test Project. :sunny: \n<!here> <!channel> <@nrayapati> ", tokens: "BUILD_NUMBER,BUILD_ID", status: 'STARTED' }
         }
       }
     }
@@ -71,8 +71,8 @@ REGISTRY: Requiere construir o no Registry en ECR'''
       post {
         success {
           script {
-            withEnv(['HUBOT_URL=http://52.2.27.172:9999','HUBOT_DEFAULT_ROOM=pull-requests','HUBOT_FAIL_ON_ERROR=false'])
-            hubotSend message: "*Release Completed*. \n Releaseing Test Project.", tokens: "BUILD_NUMBER,BUILD_ID", status: 'SUCCESS'
+            withEnv(['HUBOT_URL=http://52.2.27.172:9999','HUBOT_DEFAULT_ROOM=pull-requests','HUBOT_FAIL_ON_ERROR=false']) {
+            hubotSend message: "*Release Completed*. \n Releaseing Test Project.", tokens: "BUILD_NUMBER,BUILD_ID", status: 'SUCCESS' }
           }
         }
       }
@@ -89,8 +89,8 @@ REGISTRY: Requiere construir o no Registry en ECR'''
       steps {
         //input "Continue deployment to Staging?"
         script {
-          withEnv(['HUBOT_URL=http://52.2.27.172:9999','HUBOT_DEFAULT_ROOM=pull-requests','HUBOT_FAIL_ON_ERROR=false'])
-          hubotApprove message: 'Promote to Staging?', tokens: "BUILD_NUMBER, BUILD_DURATION", status: 'ABORTED'
+          withEnv(['HUBOT_URL=http://52.2.27.172:9999','HUBOT_DEFAULT_ROOM=pull-requests','HUBOT_FAIL_ON_ERROR=false']) {
+          hubotApprove message: 'Promote to Staging?', tokens: "BUILD_NUMBER, BUILD_DURATION", status: 'ABORTED' }
           config = fnSteps.configs(DEVELOPMENT_ENV)
         }
       }
@@ -118,8 +118,8 @@ REGISTRY: Requiere construir o no Registry en ECR'''
       post {
         success {
           script {
-            withEnv(['HUBOT_URL=http://52.2.27.172:9999','HUBOT_DEFAULT_ROOM=pull-requests','HUBOT_FAIL_ON_ERROR=false'])
-            hubotSend message: "*Staging Deployment Successful...* \n Deployed Test Project to 192.168.1.175 node.", tokens: "BUILD_NUMBER,BUILD_ID", status: 'SUCCESS'
+            withEnv(['HUBOT_URL=http://52.2.27.172:9999','HUBOT_DEFAULT_ROOM=pull-requests','HUBOT_FAIL_ON_ERROR=false']) {
+            hubotSend message: "*Staging Deployment Successful...* \n Deployed Test Project to 192.168.1.175 node.", tokens: "BUILD_NUMBER,BUILD_ID", status: 'SUCCESS' }
           }
         }
       }
@@ -135,8 +135,8 @@ REGISTRY: Requiere construir o no Registry en ECR'''
       steps {
         //input "Continue deployment to Production?"
         script {
-          withEnv(['HUBOT_URL=http://52.2.27.172:9999','HUBOT_DEFAULT_ROOM=pull-requests','HUBOT_FAIL_ON_ERROR=false'])
-          hubotApprove message: 'Promote to Production?', tokens: "BUILD_NUMBER, BUILD_DURATION", status: 'ABORTED'
+          withEnv(['HUBOT_URL=http://52.2.27.172:9999','HUBOT_DEFAULT_ROOM=pull-requests','HUBOT_FAIL_ON_ERROR=false'])  {
+          hubotApprove message: 'Promote to Production?', tokens: "BUILD_NUMBER, BUILD_DURATION", status: 'ABORTED' }
           config = fnSteps.configs(DEVELOPMENT_ENV)
         }
       }
@@ -164,8 +164,8 @@ REGISTRY: Requiere construir o no Registry en ECR'''
       post {
         success {
           script {
-            withEnv(['HUBOT_URL=http://52.2.27.172:9999','HUBOT_DEFAULT_ROOM=pull-requests','HUBOT_FAIL_ON_ERROR=false'])
-            hubotSend message: "*Hooray! Went to Prod... :satisfied:* \n Deployed Test Project to prod(10.12.1.191) node.", tokens: "BUILD_NUMBER,BUILD_ID", status: 'SUCCESS'
+            withEnv(['HUBOT_URL=http://52.2.27.172:9999','HUBOT_DEFAULT_ROOM=pull-requests','HUBOT_FAIL_ON_ERROR=false']) {
+            hubotSend message: "*Hooray! Went to Prod... :satisfied:* \n Deployed Test Project to prod(10.12.1.191) node.", tokens: "BUILD_NUMBER,BUILD_ID", status: 'SUCCESS' }
           }
         }
       }
