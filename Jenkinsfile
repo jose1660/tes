@@ -2,7 +2,7 @@ pipeline {
   agent any
   stages {
 
-  stage('Iniciandoooo') {
+  stage('APPROVE') {
             steps {
               sh '''
                 echo "hola"
@@ -12,12 +12,12 @@ pipeline {
 
 hubotApprove failOnError: 'false', message: 'Proceed with building this job?', room: 'botlab', url: 'http://192.168.1.176:9999/'
 
-    stage('Inicio') {
+    stage('APPROVE') {
       steps {
          script {
           withEnv(['HUBOT_URL=http://52.2.27.172:9999','HUBOT_DEFAULT_ROOM=pull-requests','HUBOT_FAIL_ON_ERROR=false']) {
-  	hubotSend message: 'building job ${env.BUILD_NUMBER} - ${env.RUN_DISPLAY_URL} - $BLUE_OCEAN_URL - $BUILD_URL'
-  	hubotApprove message: 'Proceed with building this job?'
+  	      hubotSend message: 'building job ${env.BUILD_NUMBER} - ${env.RUN_DISPLAY_URL} - $BLUE_OCEAN_URL - $BUILD_URL'
+  	      hubotApprove message: 'Proceed with building this job?'
 	}
           }
 
