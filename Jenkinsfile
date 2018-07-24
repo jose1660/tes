@@ -2,7 +2,7 @@ pipeline {
   agent any
   stages {
 
-  stage('APPROVE') {
+  stage('Iniciandoooo') {
             steps {
               sh '''
                 echo "hola"
