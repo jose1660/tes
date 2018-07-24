@@ -44,6 +44,7 @@ REGISTRY: Requiere construir o no Registry en ECR'''
       steps {
         script {
           config = fnSteps.configs(DEVELOPMENT_ENV)
+          hubotSend message: "*Release Started*. \n Releasing Test Project. :sunny: \n<!here> <!channel> <@nrayapati> ", tokens: "BUILD_NUMBER,BUILD_ID", status: 'STARTED'
         }
       }
     }
@@ -66,6 +67,14 @@ REGISTRY: Requiere construir o no Registry en ECR'''
           steps { script { fnSteps.registry(config) } }
         }
       }
+      post {
+        success {
+          script {
+            hubotSend message: "*Release Completed*. \n Releaseing Test Project.", tokens: "BUILD_NUMBER,BUILD_ID", status: 'SUCCESS'
+          }
+        }
+      }
+
     }
 
     /* #################### Staging #################### */
@@ -76,8 +85,9 @@ REGISTRY: Requiere construir o no Registry en ECR'''
         expression { return params.STAGING }
       }
       steps {
-        input "Continue deployment to Staging?"
+        //input "Continue deployment to Staging?"
         script {
+          hubotApprove message: 'Promote to Staging?', tokens: "BUILD_NUMBER, BUILD_DURATION", status: 'ABORTED'
           config = fnSteps.configs(DEVELOPMENT_ENV)
         }
       }
@@ -102,6 +112,13 @@ REGISTRY: Requiere construir o no Registry en ECR'''
           steps { script { fnSteps.registry(config) } }
         }
       }
+      post {
+        success {
+          script {
+            hubotSend message: "*Staging Deployment Successful...* \n Deployed Test Project to 192.168.1.175 node.", tokens: "BUILD_NUMBER,BUILD_ID", status: 'SUCCESS'
+          }
+        }
+      }
     }
 
     /* #################### Production #################### */
@@ -112,8 +129,9 @@ REGISTRY: Requiere construir o no Registry en ECR'''
         expression { return params.PRODUCTION }
       }
       steps {
-        input "Continue deployment to Production?"
+        //input "Continue deployment to Production?"
         script {
+          hubotApprove message: 'Promote to Production?', tokens: "BUILD_NUMBER, BUILD_DURATION", status: 'ABORTED'
           config = fnSteps.configs(DEVELOPMENT_ENV)
         }
       }
@@ -136,6 +154,13 @@ REGISTRY: Requiere construir o no Registry en ECR'''
         stage('ECR') {
           when { expression { return params.EXECUTE == 'REGISTRY' }}
           steps { script { fnSteps.registry(config) } }
+        }
+      }
+      post {
+        success {
+          script {
+            hubotSend message: "*Hooray! Went to Prod... :satisfied:* \n Deployed Test Project to prod(10.12.1.191) node.", tokens: "BUILD_NUMBER,BUILD_ID", status: 'SUCCESS'
+          }
         }
       }
     }
