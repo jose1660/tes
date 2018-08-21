@@ -1,0 +1,44 @@
+{
+   "correo_responsable" : "jaucasime@bcp.com.pe",
+   "area_bcp" : "Big Data CoE",
+   "empresa" : "Everis",
+   "comentarios" : "CRM Operativo",
+   "config_version" : "1.2",
+
+   "params" :
+   {
+      "PRM_SUBS_COD" : "BCP",
+      "PRM_CAPA_COD" : "EDV",
+      "PRM_PROY_COD" : "CRMO",
+      "PRM_APPL_COD" : "FDG",
+      "PRM_PROC_COD" : "FDG_IPCLBA01_PDMRARORAC"
+   },
+   
+   "esquemas" :
+   {
+       "avros" :
+       [
+           {
+               "file" : "",
+               "CERT" : "",
+               "PROD" : ""
+           }
+        ]
+   },
+
+   "estrategia" :
+   [
+	  {"HIVE" : "DDL_TABLE_FDG_IPCLBA01_PDMRARORAC.hql"},
+	  {"ORACLE" : "DML_ADMIN_FDG_IPCLBA01_PDMRARORAC.sql"},
+	  {"ORACLE" : "DML_CALIDAD_FDG_IPCLBA01_PDMRARORAC.sql"}
+   ],
+
+   "usuarios" :
+   [
+      {
+         "rol" : "LT",
+         "nombre" : "Alonso Melgarejo",
+         "correo" : "alonso.raul.melgarejo.galvan@everis.com"
+      }
+   ]
+}
