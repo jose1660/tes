@@ -1,4 +1,4 @@
-FROM node:4.4.3-slim
+FROM node
 
 MAINTAINER "Naresh Rayapati" <naresh.rayapati@yahoo.com>
 
