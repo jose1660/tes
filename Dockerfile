@@ -8,7 +8,7 @@ MAINTAINER "Naresh Rayapati" <naresh.rayapati@yahoo.com>
 
 # Install CoffeeScript, Hubot
 RUN \
-  npm install -g coffee-script hubot yo generator-hubot && \
+  npm install -g coffee-script hubot yo generator-hubot hubot-cron-events && \
   rm -rf /var/lib/apt/lists/*
 
 # Make user for Hubot
