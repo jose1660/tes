@@ -1,27 +1,9 @@
-FROM node
-
-MAINTAINER "Naresh Rayapati" <naresh.rayapati@yahoo.com>
-
-
-
-
-
-# Install CoffeeScript, Hubot
-RUN \
-  npm install -g coffee-script hubot yo generator-hubot && \
-  rm -rf /var/lib/apt/lists/*
-
-# Make user for Hubot
-RUN groupadd -g 501 hubot && \
-  useradd -m -u 501 -g 501 hubot
-
-USER hubot
-WORKDIR /home/hubot
-
-COPY ["external-scripts.json","package.json","/home/hubot/"]
-ADD bin /home/hubot/bin
-ADD scripts /home/hubot/scripts
-
-RUN npm install --silent
-
-CMD ["/bin/sh", "-c", "bin/hubot"]
+FROM node:latest
+RUN apt-get update && \
+    apt-get install -y net-tools curl htop apt-transport-https
+RUN npm install -g yo generator-hubot coffeescript && mkdir /hubot && chown node:node /hubot
+USER node
+WORKDIR /hubot
+RUN npm install hubot-scripts && npm install hubot-slack --save && yo hubot --owner="Antonio Kalde <jose1660@gmail.com>" --name="Remedy" --description="Remedy Slack" --adapter="slack" --defaults
+ADD scripts /hubot/scripts
+CMD HUBOT_SLACK_TOKEN=${HUBOT_SLACK_TOKEN} ./bin/hubot --adapter slack
