@@ -1,7 +1,8 @@
 module.exports = (robot) ->
-    robot.hear /List crq/i, (res) ->
+    robot.hear /ver (.*)$/i, (res) ->
+        grupo = res.match[1]
         @exec = require('child_process').exec
-        command = "curl -i http://google.com"
+        command = "sh consultas.sh #{grupo}"
         res.send("Getting your pods")
         @exec command, (error, stdout, stderror) ->
             if stdout
