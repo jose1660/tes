@@ -2,7 +2,7 @@
 
 # This is just an example on how we can run hubot with docker.
 
-export HUBOT_SLACK_TOKEN=xoxb-435859165350-781344934096-YzGBYmVlcRQzp8qECdKsVJuq
+export HUBOT_SLACK_TOKEN=abc
 
 docker run \
   -e "HUBOT_SLACK_TOKEN=$HUBOT_SLACK_TOKEN" \
